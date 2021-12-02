@@ -1,4 +1,4 @@
-package fr.lernejo.guessname;
+package fr.lernejo.guessgame;
 
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class HumanPlayer implements Player{
 
-    Logger logger = LoggerFactory.getLogger("player");
-    Scanner sc = new Scanner(System.in);
+    private Logger logger = LoggerFactory.getLogger("player");
+    private Scanner sc = new Scanner(System.in);
 
     @Override
     public long askNextGuess() {
@@ -21,9 +21,9 @@ public class HumanPlayer implements Player{
     @Override
     public void respond(boolean lowerOrGreater) {
         if(lowerOrGreater){
-            this.logger.log("Plus petit");
+            this.logger.log("Echoué; Plus petit");
         }else{
-            this.logger.log("Plus grand");
+            this.logger.log("Echoué; Plus grand");
         }
     }
 }

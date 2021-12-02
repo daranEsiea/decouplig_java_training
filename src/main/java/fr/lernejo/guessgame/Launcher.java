@@ -1,12 +1,10 @@
-package fr.lernejo.guessname;
+package fr.lernejo.guessgame;
 
 import java.security.SecureRandom;
 
 public class Launcher {
 
     public static void main(String[] args) {
-
-
         if(args[0].equals("-interactive")){
             HumanPlayer humanPlayer = new HumanPlayer();
             Simulation sim = new Simulation(humanPlayer);

@@ -1,4 +1,4 @@
-package fr.lernejo.guessname;
+package fr.lernejo.guessgame;
 
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
@@ -8,7 +8,6 @@ public class Simulation {
     private final Logger logger = LoggerFactory.getLogger("simulation");
     private final Player player;  //TODO add variable type
     private long numberToGuess; //TODO add variable type
-    private boolean player_success = true;
 
     public Simulation(Player player) {
         this.player = player;
@@ -26,7 +25,6 @@ public class Simulation {
 
         if(nb == this.numberToGuess){
             this.logger.log("Trouvé");
-            player_success = false;
             return true;
         }else{
             if(nb > this.numberToGuess){

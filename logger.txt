@@ -1,0 +1,4 @@
+2021-12-03 02:08:10.323 simulation Trouvé
+2021-12-03 02:08:10.341 simulation Temps passé : 83 ms
+2021-12-03 02:09:18.255 simulation Trouvé
+2021-12-03 02:09:18.271 simulation Temps passé : 25222 ms

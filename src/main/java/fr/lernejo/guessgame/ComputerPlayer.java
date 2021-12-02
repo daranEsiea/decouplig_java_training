@@ -1,4 +1,4 @@
-package fr.lernejo.guessname;
+package fr.lernejo.guessgame;
 
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
@@ -26,7 +26,7 @@ public class ComputerPlayer implements Player{
             }
         }
         mean = (this.max+this.min)/2;
-
+        this.logger.log(String.valueOf(mean));
         return mean;
     }
 
