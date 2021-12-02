@@ -20,7 +20,7 @@ public class Launcher {
             ComputerPlayer computerPlayer = new ComputerPlayer();
             Simulation sim = new Simulation(computerPlayer);
             sim.initialize(Long.parseLong(args[1]));
-            sim.loopUntilPlayerSucceed(10);
+            sim.loopUntilPlayerSucceed(1000);
         }else{
             System.out.println("Deux façons de lancer le programme : ");
             System.out.println("-interactive");
