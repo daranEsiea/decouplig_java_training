@@ -5,14 +5,30 @@ import java.security.SecureRandom;
 public class Launcher {
 
     public static void main(String[] args) {
-        HumanPlayer humanPlayer = new HumanPlayer();
-        Simulation sim = new Simulation(humanPlayer);
 
-        SecureRandom random = new SecureRandom();
-        // long randomNumber = random.nextLong(); // génère un nombre entre Long.MIN_VALUE et Long.MAX_VALUE
-        long random_number = random.nextInt(100); // génère un nombre entre 0 (inclus) et 100 (exclus)
-        sim.initialize(random_number);
-        sim.loopUntilPlayerSucceed();
+
+        if(args[0].equals("-interactive")){
+            HumanPlayer humanPlayer = new HumanPlayer();
+            Simulation sim = new Simulation(humanPlayer);
+
+            SecureRandom random = new SecureRandom();
+            long randomNumber = random.nextLong(1, 101); // génère un nombre entre Long.MIN_VALUE et Long.MAX_VALUE-1
+
+            sim.initialize(randomNumber);
+            sim.loopUntilPlayerSucceed(Long.MAX_VALUE);
+        }else if((args[0].equals("-auto")) && (args[1].matches("-?\\d+(\\.\\d+)?"))){ // si c'est numeric
+            ComputerPlayer computerPlayer = new ComputerPlayer();
+            Simulation sim = new Simulation(computerPlayer);
+            sim.initialize(Long.parseLong(args[1]));
+            sim.loopUntilPlayerSucceed(10);
+        }else{
+            System.out.println("Deux façons de lancer le programme : ");
+            System.out.println("-interactive");
+            System.out.println("Ou");
+            System.out.println("-auto 'nombre'");
+
+        }
+
     }
 
 }

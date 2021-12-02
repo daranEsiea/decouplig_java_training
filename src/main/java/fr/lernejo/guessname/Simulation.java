@@ -6,13 +6,12 @@ import fr.lernejo.logger.LoggerFactory;
 public class Simulation {
 
     private final Logger logger = LoggerFactory.getLogger("simulation");
-    private final HumanPlayer player;  //TODO add variable type
+    private final Player player;  //TODO add variable type
     private long numberToGuess; //TODO add variable type
     private boolean player_success = true;
 
     public Simulation(Player player) {
-        this.player = (HumanPlayer) player;
-        this.initialize(this.numberToGuess);
+        this.player = player;
     }
 
     public void initialize(long numberToGuess) {
@@ -31,21 +30,37 @@ public class Simulation {
             return true;
         }else{
             if(nb > this.numberToGuess){
-                this.logger.log("Plus petit");
-                //this.player.respond(true);
+                this.player.respond(true);
                 return false;
             }else if(nb < this.numberToGuess){
-                //this.player.respond(false);
-                this.logger.log("Plus grand");
+                this.player.respond(false);
                 return false;
             }
         }
+        this.logger.log("Perdu");
         return false;
     }
 
-    public void loopUntilPlayerSucceed() {
-        while(player_success){
-            this.nextRound();
+    public void loopUntilPlayerSucceed(long nb_iter) {
+        int essai = 0;
+        boolean found = false;
+        long time_1 = System.currentTimeMillis();
+        while(essai < nb_iter){
+            found = this.nextRound();
+            if(found){
+                break;
+            }else{
+                essai++;
+            }
+
         }
+        if(!found){
+            this.logger.log("Perdu ! Le nombre était : " + numberToGuess);
+        }
+
+        long time_2 = System.currentTimeMillis();
+
+        this.logger.log("Temps passé : " + (time_2-time_1) + " ms");
+
     }
 }

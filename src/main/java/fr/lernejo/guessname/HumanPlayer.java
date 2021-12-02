@@ -7,16 +7,13 @@ import java.util.Scanner;
 
 public class HumanPlayer implements Player{
 
-    void HumanPLayer(){
-
-        Logger logger = LoggerFactory.getLogger("player");
-    }
+    Logger logger = LoggerFactory.getLogger("player");
+    Scanner sc = new Scanner(System.in);
 
     @Override
     public long askNextGuess() {
         System.out.println("Entrer nombre");
-        Scanner sc = new Scanner(System.in);
-        long value = sc.nextInt();
+        long value = sc.nextLong();
 
         return value;
     }
@@ -24,9 +21,9 @@ public class HumanPlayer implements Player{
     @Override
     public void respond(boolean lowerOrGreater) {
         if(lowerOrGreater){
-            System.out.println("Plus petit");
+            this.logger.log("Plus petit");
         }else{
-            System.out.println("Plus grand");
+            this.logger.log("Plus grand");
         }
     }
 }
